@@ -4,13 +4,18 @@
  */
 package mx.itson.catrina.ui;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import mx.itson.catrina.entidades.Movimiento;
+import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
+import mx.itson.catrina.entidades.*;
 
 /**
  *
@@ -625,7 +630,45 @@ public class Main extends javax.swing.JFrame {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
 
-        List<Movimiento> movimientos = new ArrayList<>();
+        try{
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+            
+            if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+                File archivo = fileChooser.getSelectedFile();
+                
+                byte archivoBytes[] = Files.readAllBytes(archivo.toPath());
+                
+                String contenido = new String(archivoBytes,StandardCharsets.UTF_8);
+                
+                Cuenta cuenta = new Cuenta().deserializar(contenido);
+                
+                lblNombre.setText(cuenta.getCliente().getNombre());
+                lblRfc.setText(cuenta.getCliente().getRfc());
+                lblDomicilio.setText(cuenta.getCliente().getDomicilio());
+                lblCiudad.setText(cuenta.getCliente().getCiudad());
+                lblCp.setText(Integer.toString(cuenta.getCliente().getCp()));
+                lblCuenta.setText(cuenta.getCuenta());
+                lblClabe.setText(Integer.toString(cuenta.getClabe()));
+                lblMoneda.setText(cuenta.getMoneda());
+                //lblSaldoInicial.setText("");
+                
+                DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                
+                DefaultTableModel modelo1 = (DefaultTableModel) tblMovimientos.getModel();
+                modelo1.setRowCount(0);
+                for(Movimiento m : cuenta.getMovimientos()){
+                    modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()), m.getDescripcion()});
+                }
+            }
+            
+        }catch(Exception ex){
+            System.err.println("Ocurrio un error: " + ex.getMessage());
+            
+        }
+        
+        
+        /*List<Movimiento> movimientos = new ArrayList<>();
         
         Movimiento movimiento1 = new Movimiento();
         movimiento1.setMonto(1500);
@@ -649,7 +692,7 @@ public class Main extends javax.swing.JFrame {
         System.out.println("\nLISTA ORDENADA");
         for(Movimiento m : movimientos){
             System.out.println(formatoFecha.format(m.getFecha()));
-        }
+        }*/
        
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 

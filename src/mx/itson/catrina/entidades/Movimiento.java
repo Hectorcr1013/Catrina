@@ -18,6 +18,36 @@ public class Movimiento {
     private int tipo;
     
     /**
+     * @return the Descripcion
+     */
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    /**
+     * @param Descripcion the Descripcion to set
+     */
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public int getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+  
+    
+    /**
      * @return the monto
      */
     public double getMonto() {

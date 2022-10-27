@@ -20,14 +20,14 @@ public class Cliente {
     /**
      * @return the codigo
      */
-    public String getCoidgo() {
+    public String getCodigo() {
         return codigo;
     }
 
     /**
      * @param coidgo the codigo to set
      */
-    public void setCoidgo(String coidgo) {
+    public void setCodigo(String coidgo) {
         this.codigo = coidgo;
     }
 
