@@ -12,10 +12,39 @@ import java.util.Date;
  */
 public class Movimiento {
 
-    private double monto;
+    private double cantidad;
     private Date fecha;
     private String Descripcion;
-    private int tipo;
+    private int deposito;
+    private int retiro;
+    
+    /**
+     * @return the deposito
+     */
+    public int getDeposito() {
+        return deposito;
+    }
+
+    /**
+     * @param deposito the deposito to set
+     */
+    public void setDeposito(int deposito) {
+        this.deposito = deposito;
+    }
+
+    /**
+     * @return the retiro
+     */
+    public int getRetiro() {
+        return retiro;
+    }
+
+    /**
+     * @param retiro the retiro to set
+     */
+    public void setRetiro(int retiro) {
+        this.retiro = retiro;
+    }
     
     /**
      * @return the Descripcion
@@ -30,35 +59,19 @@ public class Movimiento {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-
-    /**
-     * @return the tipo
-     */
-    public int getTipo() {
-        return tipo;
-    }
-
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-  
     
     /**
-     * @return the monto
+     * @return the cantidad
      */
-    public double getMonto() {
-        return monto;
+    public double getCantidad() {
+        return cantidad;
     }
 
     /**
-     * @param monto the monto to set
+     * @param cantidad the cantidad to set
      */
-    public void setMonto(double monto) {
-        this.monto = monto;
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
 
     /**

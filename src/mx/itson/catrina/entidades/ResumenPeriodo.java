@@ -8,11 +8,11 @@ package mx.itson.catrina.entidades;
  *
  * @author chiqu
  */
-public class ResumenPeriodo {
+public class ResumenPeriodo{
 
     private double saldoInicial;
-    private double depositos;
-    private double retiros;
+    private double depositosTotal;
+    private double retirosTotal;
     private double saldoFinal;
     
     /**
@@ -32,29 +32,29 @@ public class ResumenPeriodo {
     /**
      * @return the depositos
      */
-    public double getDepositos() {
-        return depositos;
+    public double getDepositosTotal() {
+        return depositosTotal;
     }
 
     /**
      * @param depositos the depositos to set
      */
-    public void setDepositos(double depositos) {
-        this.depositos = depositos;
+    public void setDepositosTotal(double depositos) {
+        this.depositosTotal = depositos;
     }
 
     /**
      * @return the retiros
      */
-    public double getRetiros() {
-        return retiros;
+    public double getRetirosTotal() {
+        return retirosTotal;
     }
 
     /**
      * @param retiros the retiros to set
      */
-    public void setRetiros(double retiros) {
-        this.retiros = retiros;
+    public void setRetirosToral(double retirosTotal) {
+        this.retirosTotal = retirosTotal;
     }
 
     /**

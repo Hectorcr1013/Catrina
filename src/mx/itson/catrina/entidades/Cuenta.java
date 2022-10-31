@@ -6,21 +6,68 @@ package mx.itson.catrina.entidades;
 
 import com.google.gson.Gson;
 import java.util.List;
+import mx.itson.catrina.enumeradores.Tipo;
 
 /**
  *
  * @author chiqu
  */
 public class Cuenta {
-
+    
     private String producto;
     private String cuenta;
-    private int clabe;
+    private String clabe;
     private String moneda;
     
     private List<Movimiento> movimientos;
-    private Cliente clientes;
+    private Cliente cliente;
+    private ResumenPeriodo resumenPeriodo;
+    private Tipo tipo;
     
+    
+    
+    /**
+     * @return the tipo
+     */
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+    
+    /**
+     * @return the clabe
+     */
+    public String getClabe() {
+        return clabe;
+    }
+
+    /**
+     * @param clabe the clabe to set
+     */
+    public void setClabe(String clabe) {
+        this.clabe = clabe;
+    }
+    
+    /**
+     * @return the resumenPeriodo
+     */
+    public ResumenPeriodo getResumenPeriodo() {
+        return resumenPeriodo;
+    }
+
+    /**
+     * @param resumenPeriodo the resumenPeriodo to set
+     */
+    public void setResumenPeriodo(ResumenPeriodo resumenPeriodo) {
+        this.resumenPeriodo = resumenPeriodo;
+    }
+
     /**
      * 
      * @param json The parameter for deserializar method
@@ -51,31 +98,17 @@ public class Cuenta {
     }
 
     /**
-     * @return the clientes
-     */
-    public Cliente getClientes() {
-        return clientes;
-    }
-
-    /**
-     * @param clientes the clientes to set
-     */
-    public void setClientes(Cliente clientes) {
-        this.clientes = clientes;
-    }
-
-    /**
      * @return the cliente
      */
     public Cliente getCliente() {
-        return clientes;
+        return cliente;
     }
 
     /**
      * @param cliente the cliente to set
      */
     public void setCliente(Cliente cliente) {
-        this.clientes = cliente;
+        this.cliente = cliente;
     }
     
     /**
@@ -104,20 +137,6 @@ public class Cuenta {
      */
     public void setCuenta(String cuenta) {
         this.cuenta = cuenta;
-    }
-
-    /**
-     * @return the clabe
-     */
-    public int getClabe() {
-        return clabe;
-    }
-
-    /**
-     * @param clabe the clabe to set
-     */
-    public void setClabe(int clabe) {
-        this.clabe = clabe;
     }
 
     /**

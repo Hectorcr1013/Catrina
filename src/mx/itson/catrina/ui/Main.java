@@ -9,10 +9,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.catrina.entidades.*;
@@ -643,22 +645,33 @@ public class Main extends javax.swing.JFrame {
                 
                 Cuenta cuenta = new Cuenta().deserializar(contenido);
                 
+                Locale local = new Locale("es", "MX");
+                NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
+                
                 lblNombre.setText(cuenta.getCliente().getNombre());
                 lblRfc.setText(cuenta.getCliente().getRfc());
                 lblDomicilio.setText(cuenta.getCliente().getDomicilio());
                 lblCiudad.setText(cuenta.getCliente().getCiudad());
                 lblCp.setText(Integer.toString(cuenta.getCliente().getCp()));
                 lblCuenta.setText(cuenta.getCuenta());
-                lblClabe.setText(Integer.toString(cuenta.getClabe()));
+                lblClabe.setText(cuenta.getClabe());
                 lblMoneda.setText(cuenta.getMoneda());
-                //lblSaldoInicial.setText("");
+                lblSaldoInicial.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoInicial())));
+                lblDepositos.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getDepositosTotal())));
+                lblRetiros.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getRetirosTotal())));
+                lblSaldoFinal.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoFinal())));
+                lblSaldoFinalPeriodo.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoFinal())));
                 
                 DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
                 
                 DefaultTableModel modelo1 = (DefaultTableModel) tblMovimientos.getModel();
                 modelo1.setRowCount(0);
                 for(Movimiento m : cuenta.getMovimientos()){
-                    modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()), m.getDescripcion()});
+                    modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()),
+                        m.getDescripcion(),
+                        formatoMoneda.format(m.getDeposito()),
+                        formatoMoneda.format(m.getRetiro()),
+                        formatoMoneda.format(m.getCantidad())});
                 }
             }
             
