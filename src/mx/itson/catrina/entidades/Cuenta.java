@@ -11,8 +11,8 @@ import mx.itson.catrina.enumeradores.Tipo;
 import mx.itson.catrina.ui.Main;
 
 /**
- *
- * @author chiqu
+ * Esta clase es para obtener los atributos de la cuenta contable y deserealizar un archivo json 
+ * @author hector
  */
 public class Cuenta {
     
@@ -25,7 +25,7 @@ public class Cuenta {
     private Cliente cliente;
 
     /**
-     * 
+     * Metodo para deserializar el json importado
      * @param json The parameter for deserializar method
      * @return the cuenta
      */
@@ -41,9 +41,9 @@ public class Cuenta {
     
     
     /**
-     * 
-     * @param mes
-     * @param movimientosDesordenados
+     * Metodo para obtener la lista de movimientos
+     * @param mes recibe el mes seleccionado en el combobox
+     * @param movimientosDesordenados recibe la lista de movimiento inicial
      * @return 
      */
     public List<Movimiento> obtenerListaMovimientos(int mes, List<Movimiento> movimientosDesordenados){
@@ -60,9 +60,9 @@ public class Cuenta {
     }
     
     /**
-     * 
-     * @param mes
-     * @param listaMovimientos, mes
+     * Metodo para obtener el saldo inicial del resumen de estado de cuenta
+     * @param mes recibe el mes seleccionado en el combobox
+     * @param listaMovimientos recibe la lista de movimientos incial
      * @return 
      */
     public double getSaldoInicial(int mes, List<Movimiento> listaMovimientos){

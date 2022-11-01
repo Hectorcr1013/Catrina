@@ -5,8 +5,8 @@
 package mx.itson.catrina.entidades;
 
 /**
- *
- * @author chiqu
+ * Esta clase es lo que contiene dentro de cliente para obtener los datos de estado de cuenta
+ * @author hector
  */
 public class Cliente {
 

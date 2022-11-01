@@ -7,8 +7,8 @@ package mx.itson.catrina.enumeradores;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
- * @author chiqu
+ * enumeradores de tipo retiro o deposito
+ * @author hector
  * 
  */
 public enum Tipo {

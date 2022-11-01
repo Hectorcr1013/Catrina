@@ -8,8 +8,8 @@ import java.util.Date;
 import mx.itson.catrina.enumeradores.Tipo;
 
 /**
- *
- * @author chiqu
+ * Esta clase es para guardar y generar los movimientos del estado de cuenta
+ * @author hector
  */
 public class Movimiento {
 

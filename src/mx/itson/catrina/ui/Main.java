@@ -24,7 +24,7 @@ import mx.itson.catrina.entidades.*;
 import mx.itson.catrina.enumeradores.Tipo;
 
 /**
- *
+ * Main donde se ejecuta el jframe 
  * @author chiqu
  */
 public class Main extends javax.swing.JFrame {
@@ -648,8 +648,6 @@ public class Main extends javax.swing.JFrame {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
 
-       
-        
         try{
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
