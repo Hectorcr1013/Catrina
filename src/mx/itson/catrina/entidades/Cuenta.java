@@ -39,7 +39,6 @@ public class Cuenta {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-    
     /**
      * @return the clabe
      */

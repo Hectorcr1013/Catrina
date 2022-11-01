@@ -17,6 +17,23 @@ public class Movimiento {
     private String Descripcion;
     private int deposito;
     private int retiro;
+    private int subtotal;
+    
+    
+    
+    /**
+     * @return the subtotal
+     */
+    public int getSubtotal() {
+        return subtotal;
+    }
+
+    /**
+     * @param subtotal the subtotal to set
+     */
+    public void setSubtotal(int subtotal) {
+        this.subtotal = subtotal;
+    }
     
     /**
      * @return the deposito

@@ -671,7 +671,7 @@ public class Main extends javax.swing.JFrame {
                         m.getDescripcion(),
                         formatoMoneda.format(m.getDeposito()),
                         formatoMoneda.format(m.getRetiro()),
-                        formatoMoneda.format(m.getCantidad())});
+                        formatoMoneda.format(m.getSubtotal())});
                 }
             }
             
