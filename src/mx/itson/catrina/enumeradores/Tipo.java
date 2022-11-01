@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  *
  * @author chiqu
+ * 
  */
 public enum Tipo {
     @SerializedName("1")

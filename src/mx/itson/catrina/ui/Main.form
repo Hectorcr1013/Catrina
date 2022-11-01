@@ -494,6 +494,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxMesActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -527,13 +530,7 @@
                               <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel13" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblSaldoInicial" pref="344" max="32767" attributes="0"/>
-                              <Component id="lblRetiros" max="32767" attributes="0"/>
-                              <Component id="lblSaldoFinal" max="32767" attributes="0"/>
-                              <Component id="lblDepositos" alignment="1" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -545,25 +542,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblSaldoInicial" max="32767" attributes="0"/>
-                      <Component id="jPanel13" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblDepositos" max="32767" attributes="0"/>
-                      <Component id="jPanel14" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblRetiros" max="32767" attributes="0"/>
-                      <Component id="jPanel15" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel16" max="32767" attributes="0"/>
-                      <Component id="lblSaldoFinal" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -604,11 +589,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblSaldoInicial">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="jPanel13">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -619,12 +599,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" alignment="0" pref="343" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel5" min="-2" pref="153" max="-2" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                      <Component id="lblSaldoInicial" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" alignment="0" pref="22" max="32767" attributes="0"/>
+                  <Component id="jLabel5" pref="22" max="32767" attributes="0"/>
+                  <Component id="lblSaldoInicial" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -640,6 +626,11 @@
                 <Property name="text" type="java.lang.String" value=" Saldo inicial (anterior)"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblSaldoInicial">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="11"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel14">
@@ -652,12 +643,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel9" min="-2" pref="155" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblDepositos" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel9" alignment="1" pref="22" max="32767" attributes="0"/>
+                  <Component id="jLabel9" pref="22" max="32767" attributes="0"/>
+                  <Component id="lblDepositos" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -673,6 +670,11 @@
                 <Property name="text" type="java.lang.String" value=" Depositos"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblDepositos">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="11"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel15">
@@ -685,12 +687,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel11" min="-2" pref="141" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblRetiros" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel11" alignment="1" pref="22" max="32767" attributes="0"/>
+                  <Component id="jLabel11" pref="22" max="32767" attributes="0"/>
+                  <Component id="lblRetiros" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -704,6 +712,11 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=" Retiros"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRetiros">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="11"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -736,12 +749,18 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel12" min="-2" pref="139" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblSaldoFinal" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel12" alignment="0" pref="22" max="32767" attributes="0"/>
+                      <Component id="jLabel12" pref="22" max="32767" attributes="0"/>
+                      <Component id="lblSaldoFinal" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -757,25 +776,15 @@
                     <Property name="text" type="java.lang.String" value=" Saldo final"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblSaldoFinal">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="11"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblDepositos">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="11"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblRetiros">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="11"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblSaldoFinal">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="11"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel18">

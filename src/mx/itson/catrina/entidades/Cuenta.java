@@ -5,8 +5,10 @@
 package mx.itson.catrina.entidades;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import java.util.List;
 import mx.itson.catrina.enumeradores.Tipo;
+import mx.itson.catrina.ui.Main;
 
 /**
  *
@@ -21,51 +23,6 @@ public class Cuenta {
     
     private List<Movimiento> movimientos;
     private Cliente cliente;
-    private ResumenPeriodo resumenPeriodo;
-    private Tipo tipo;
-    
-    
-    
-    /**
-     * @return the tipo
-     */
-    public Tipo getTipo() {
-        return tipo;
-    }
-
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
-    /**
-     * @return the clabe
-     */
-    public String getClabe() {
-        return clabe;
-    }
-
-    /**
-     * @param clabe the clabe to set
-     */
-    public void setClabe(String clabe) {
-        this.clabe = clabe;
-    }
-    
-    /**
-     * @return the resumenPeriodo
-     */
-    public ResumenPeriodo getResumenPeriodo() {
-        return resumenPeriodo;
-    }
-
-    /**
-     * @param resumenPeriodo the resumenPeriodo to set
-     */
-    public void setResumenPeriodo(ResumenPeriodo resumenPeriodo) {
-        this.resumenPeriodo = resumenPeriodo;
-    }
 
     /**
      * 
@@ -80,6 +37,62 @@ public class Cuenta {
             System.err.println("Ocurrio un error: " + ex.getMessage());
         }
         return cuenta;
+    }
+    
+    
+    /**
+     * 
+     * @param mes
+     * @param movimientosDesordenados
+     * @return 
+     */
+    public List<Movimiento> obtenerListaMovimientos(int mes, List<Movimiento> movimientosDesordenados){
+        List<Movimiento> movimientosOrdenados = new ArrayList<>();
+        
+        for(Movimiento movimiento : movimientosDesordenados) {
+            if(movimiento.getFecha().getMonth() == mes) {
+                movimientosOrdenados.add(movimiento);
+            }
+        }
+        
+        movimientosOrdenados.sort((mov1,mov2) -> mov1.getFecha().compareTo(mov2.getFecha()));
+        return movimientosOrdenados;
+    }
+    
+    /**
+     * 
+     * @param mes
+     * @param listaMovimientos, mes
+     * @return 
+     */
+    public double getSaldoInicial(int mes, List<Movimiento> listaMovimientos){
+        double saldoInicial = 0;
+        
+        for(Movimiento movimiento : listaMovimientos){
+            for(int i = 0; i < mes; i++){
+                if(movimiento.getFecha().getMonth() == i && movimiento.getTipo() == Tipo.DEPOSITO){
+                    saldoInicial += movimiento.getCantidad();
+                } else if (movimiento.getFecha().getMonth() == i && movimiento.getTipo() == Tipo.RETIRO){
+                    saldoInicial -= movimiento.getCantidad();
+                }
+            }
+        }
+        return saldoInicial;
+    }
+    
+    
+    /**
+     * @return the clabe
+     */
+    public String getClabe() {
+        return clabe;
+    }
+
+    /**
+     * @param clabe the clabe to set
+     */
+    public void setClabe(String clabe) {
+        this.clabe = clabe;
     }
     
     /**

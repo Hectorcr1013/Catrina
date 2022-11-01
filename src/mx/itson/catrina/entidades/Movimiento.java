@@ -5,6 +5,7 @@
 package mx.itson.catrina.entidades;
 
 import java.util.Date;
+import mx.itson.catrina.enumeradores.Tipo;
 
 /**
  *
@@ -14,67 +15,35 @@ public class Movimiento {
 
     private double cantidad;
     private Date fecha;
-    private String Descripcion;
-    private int deposito;
-    private int retiro;
-    private int subtotal;
-    
-    
+    private String descripcion;
+    private Tipo tipo;
     
     /**
-     * @return the subtotal
+     * @return the tipo
      */
-    public int getSubtotal() {
-        return subtotal;
+    public Tipo getTipo() {
+        return tipo;
     }
 
     /**
-     * @param subtotal the subtotal to set
+     * @param tipo the tipo to set
      */
-    public void setSubtotal(int subtotal) {
-        this.subtotal = subtotal;
-    }
-    
-    /**
-     * @return the deposito
-     */
-    public int getDeposito() {
-        return deposito;
-    }
-
-    /**
-     * @param deposito the deposito to set
-     */
-    public void setDeposito(int deposito) {
-        this.deposito = deposito;
-    }
-
-    /**
-     * @return the retiro
-     */
-    public int getRetiro() {
-        return retiro;
-    }
-
-    /**
-     * @param retiro the retiro to set
-     */
-    public void setRetiro(int retiro) {
-        this.retiro = retiro;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
     
     /**
      * @return the Descripcion
      */
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     /**
      * @param Descripcion the Descripcion to set
      */
     public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
     }
     
     /**

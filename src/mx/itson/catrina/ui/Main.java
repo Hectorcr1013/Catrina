@@ -13,11 +13,15 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import javax.swing.JFileChooser;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.catrina.entidades.*;
+import mx.itson.catrina.enumeradores.Tipo;
 
 /**
  *
@@ -71,18 +75,18 @@ public class Main extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        lblSaldoInicial = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        lblSaldoInicial = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        lblDepositos = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        lblRetiros = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        lblDepositos = new javax.swing.JLabel();
-        lblRetiros = new javax.swing.JLabel();
         lblSaldoFinal = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
@@ -321,6 +325,11 @@ public class Main extends javax.swing.JFrame {
         jLabel6.setText("Seleccione el mes:");
 
         cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbxMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMesActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Seleccione el archivo a cargar:");
 
@@ -349,23 +358,28 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
         );
 
-        lblSaldoInicial.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
         jPanel13.setBackground(new java.awt.Color(163, 163, 163));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText(" Saldo inicial (anterior)");
 
+        lblSaldoInicial.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(lblSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel14.setBackground(new java.awt.Color(163, 163, 163));
@@ -374,15 +388,22 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText(" Depositos");
 
+        lblDepositos.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDepositos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(lblDepositos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel15.setBackground(new java.awt.Color(163, 163, 163));
@@ -391,15 +412,22 @@ public class Main extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText(" Retiros");
 
+        lblRetiros.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRetiros, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(lblRetiros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel17.setBackground(new java.awt.Color(163, 163, 163));
@@ -408,15 +436,22 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText(" Saldo final");
 
+        lblSaldoFinal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSaldoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(lblSaldoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -432,12 +467,6 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        lblDepositos.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-
-        lblRetiros.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-
-        lblSaldoFinal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -452,12 +481,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                            .addComponent(lblRetiros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSaldoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblDepositos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -465,21 +489,13 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblDepositos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRetiros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSaldoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -632,6 +648,8 @@ public class Main extends javax.swing.JFrame {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
 
+       
+        
         try{
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -648,66 +666,65 @@ public class Main extends javax.swing.JFrame {
                 Locale local = new Locale("es", "MX");
                 NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
                 
+                int seleccionarMes = cbxMes.getSelectedIndex();
+                double subtotal = 0;
+                double retiros = 0;
+                double depositos = 0;
+                
                 lblNombre.setText(cuenta.getCliente().getNombre());
-                lblRfc.setText(cuenta.getCliente().getRfc());
-                lblDomicilio.setText(cuenta.getCliente().getDomicilio());
-                lblCiudad.setText(cuenta.getCliente().getCiudad());
-                lblCp.setText(Integer.toString(cuenta.getCliente().getCp()));
+                lblRfc.setText("RFC: "+cuenta.getCliente().getRfc());
+                lblDomicilio.setText("Domicilio: "+cuenta.getCliente().getDomicilio());
+                lblCiudad.setText("Ciudad: "+cuenta.getCliente().getCiudad());
+                lblCp.setText("Codigo postal: "+Integer.toString(cuenta.getCliente().getCp()));
                 lblCuenta.setText(cuenta.getCuenta());
                 lblClabe.setText(cuenta.getClabe());
                 lblMoneda.setText(cuenta.getMoneda());
-                lblSaldoInicial.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoInicial())));
-                lblDepositos.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getDepositosTotal())));
-                lblRetiros.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getRetirosTotal())));
-                lblSaldoFinal.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoFinal())));
-                lblSaldoFinalPeriodo.setText(formatoMoneda.format(Double.toString(cuenta.getResumenPeriodo().getSaldoFinal())));
                 
-                DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");          
+               
                 
                 DefaultTableModel modelo1 = (DefaultTableModel) tblMovimientos.getModel();
                 modelo1.setRowCount(0);
-                for(Movimiento m : cuenta.getMovimientos()){
-                    modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()),
+                for(Movimiento m : cuenta.obtenerListaMovimientos(seleccionarMes, cuenta.getMovimientos())){
+                    if(m.getTipo() == Tipo.DEPOSITO) {
+                        subtotal += m.getCantidad();
+                        depositos += m.getCantidad();
+                        
+                        modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()),
                         m.getDescripcion(),
-                        formatoMoneda.format(m.getDeposito()),
-                        formatoMoneda.format(m.getRetiro()),
-                        formatoMoneda.format(m.getSubtotal())});
+                        formatoMoneda.format(m.getCantidad()),
+                        "",
+                        formatoMoneda.format(subtotal)});
+                    } else if(m.getTipo() == Tipo.RETIRO){
+                        subtotal -= m.getCantidad();
+                        retiros += m.getCantidad();
+                        
+                        modelo1.addRow(new Object[] {formatoFecha.format(m.getFecha()),
+                        m.getDescripcion(),
+                        "",
+                        formatoMoneda.format(m.getCantidad()),
+                        formatoMoneda.format(subtotal)});
+                    }
+                    lblSaldoInicial.setText(formatoMoneda.format(cuenta.getSaldoInicial(seleccionarMes, cuenta.getMovimientos())));
+                    lblDepositos.setText(formatoMoneda.format(depositos));
+                    lblRetiros.setText(formatoMoneda.format(retiros));
+                    lblSaldoFinal.setText(formatoMoneda.format(subtotal));
+                    lblSaldoFinalPeriodo.setText(formatoMoneda.format(subtotal));
                 }
+                    
             }
             
         }catch(Exception ex){
             System.err.println("Ocurrio un error: " + ex.getMessage());
             
         }
-        
-        
-        /*List<Movimiento> movimientos = new ArrayList<>();
-        
-        Movimiento movimiento1 = new Movimiento();
-        movimiento1.setMonto(1500);
-        movimiento1.setFecha(new GregorianCalendar(2022, Calendar.AUGUST, 2).getTime());
-        movimientos.add(movimiento1);
-        
-        Movimiento movimiento2 = new Movimiento();
-        movimiento2.setMonto(1500);
-        movimiento2.setFecha(new GregorianCalendar(2021, Calendar.JANUARY, 13).getTime());
-        movimientos.add(movimiento2);
-        
-        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        
-        System.out.println("LISTA DESORDENADA");
-        for(Movimiento m : movimientos){
-            System.out.println(formatoFecha.format(m.getFecha()));
-        }
-        
-        movimientos.sort((mov1,mov2) -> mov1.getFecha().compareTo(mov2.getFecha()));
-        
-        System.out.println("\nLISTA ORDENADA");
-        for(Movimiento m : movimientos){
-            System.out.println(formatoFecha.format(m.getFecha()));
-        }*/
        
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void cbxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMesActionPerformed
+
+        
+    }//GEN-LAST:event_cbxMesActionPerformed
 
     /**
      * @param args the command line arguments
